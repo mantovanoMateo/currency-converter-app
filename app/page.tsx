@@ -8,6 +8,7 @@ import { CurrencySelector } from "@/components/currency-selector";
 import { SwapButton } from "@/components/swap-button";
 import { PriceInput } from "@/components/price-input";
 import { ConversionResult } from "@/components/conversion-result";
+import { RateChart } from "@/components/rate-chart";
 
 export default function Page() {
   const [locale, setLocale] = useState<Locale>("es");
@@ -41,13 +42,11 @@ export default function Page() {
 
   const handleCurrencyChange = (code: string) => {
     setSelectedCurrency(code);
-    setPriceAmount(null);
     setExchangeRate(null);
   };
 
   const handleSwap = () => {
     setReversed((prev) => !prev);
-    setPriceAmount(null);
   };
 
   // Determine what label to show in the input based on direction
@@ -63,48 +62,54 @@ export default function Page() {
         onRefresh={() => fetchExchangeRate(selectedCurrency)}
       />
 
-      <div className="flex-1 flex flex-col gap-5 p-4 max-w-lg mx-auto w-full">
-        {/* Currency Selector */}
-        <section aria-label="Currency selector">
-          <CurrencySelector
-            selected={selectedCurrency}
-            onSelect={handleCurrencyChange}
-          />
-        </section>
+      <div className="flex-1 flex flex-col md:flex-row gap-5 md:gap-8 p-4 max-w-lg md:max-w-4xl mx-auto w-full md:items-start md:py-8">
+        {/* Left column: Currency selector + swap */}
+        <div className="flex flex-col gap-5 md:w-1/2">
+          <section aria-label="Currency selector">
+            <CurrencySelector
+              selected={selectedCurrency}
+              onSelect={handleCurrencyChange}
+            />
+          </section>
 
-        {/* Swap direction */}
-        <section aria-label="Conversion direction">
-          <SwapButton
-            reversed={reversed}
-            onToggle={handleSwap}
-            fromLabel={selectedCurrency}
-            toLabel={selectedCurrency}
-            ariaLabel={t.swapDirection}
-          />
-        </section>
+          <section aria-label="Conversion direction">
+            <SwapButton
+              reversed={reversed}
+              onToggle={handleSwap}
+              fromLabel={selectedCurrency}
+              toLabel={selectedCurrency}
+              ariaLabel={t.swapDirection}
+            />
+          </section>
+        </div>
 
-        {/* Price Input */}
-        <section aria-label="Amount input">
-          <PriceInput
-            value={priceAmount}
-            onChange={setPriceAmount}
-            currencyLabel={inputCurrencyLabel}
-            t={t}
-          />
-        </section>
+        {/* Right column: Input + result */}
+        <div className="flex flex-col gap-5 md:w-1/2">
+          <section aria-label="Amount input">
+            <PriceInput
+              value={priceAmount}
+              onChange={setPriceAmount}
+              currencyLabel={inputCurrencyLabel}
+              t={t}
+            />
+          </section>
 
-        {/* Conversion Result */}
-        <section aria-label="Conversion result">
-          <ConversionResult
-            amount={priceAmount}
-            currency={selectedCurrency}
-            rate={exchangeRate}
-            isLoading={isLoadingRate}
-            error={rateError}
-            reversed={reversed}
-            t={t}
-          />
-        </section>
+          <section aria-label="Conversion result">
+            <ConversionResult
+              amount={priceAmount}
+              currency={selectedCurrency}
+              rate={exchangeRate}
+              isLoading={isLoadingRate}
+              error={rateError}
+              reversed={reversed}
+              t={t}
+            />
+          </section>
+
+          <section aria-label="Rate chart">
+            <RateChart currency={selectedCurrency} t={t} />
+          </section>
+        </div>
       </div>
 
       {/* Footer */}

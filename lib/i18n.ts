@@ -30,6 +30,9 @@ const translations = {
     errorRate: "No se pudo obtener el tipo de cambio. Intenta de nuevo.",
     footer: "Tasas de cambio aproximadas. No usar para transacciones financieras reales.",
     swapDirection: "Invertir conversion",
+    chartTitle: "Tendencia 30 dias",
+    chartNotAvailable: "Datos historicos no disponibles para esta moneda",
+    chartLoading: "Cargando grafico...",
     currencyNames: {
       ARS: "Peso Argentino",
       MXN: "Peso Mexicano",
@@ -59,6 +62,9 @@ const translations = {
     errorRate: "Could not fetch exchange rate. Try again.",
     footer: "Approximate exchange rates. Not for real financial transactions.",
     swapDirection: "Swap conversion",
+    chartTitle: "30-day trend",
+    chartNotAvailable: "Historical data not available for this currency",
+    chartLoading: "Loading chart...",
     currencyNames: {
       ARS: "Argentine Peso",
       MXN: "Mexican Peso",
@@ -88,6 +94,9 @@ const translations = {
     errorRate: "Nao foi possivel obter a taxa de cambio. Tente novamente.",
     footer: "Taxas de cambio aproximadas. Nao use para transacoes financeiras reais.",
     swapDirection: "Inverter conversao",
+    chartTitle: "Tendencia 30 dias",
+    chartNotAvailable: "Dados historicos nao disponiveis para esta moeda",
+    chartLoading: "Carregando grafico...",
     currencyNames: {
       ARS: "Peso Argentino",
       MXN: "Peso Mexicano",

@@ -34,7 +34,7 @@ export function HeroHeader({
         }}
       />
 
-      <div className="relative px-4 py-5">
+      <div className="relative px-4 py-5 max-w-4xl mx-auto w-full">
         {/* Top bar: refresh + language */}
         <div className="flex items-center justify-between mb-4">
           <button
