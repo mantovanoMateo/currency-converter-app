@@ -117,4 +117,4 @@ pnpm lint
 
 ## Licencia
 
-Este proyecto es privado.
+Este proyecto esta licenciado bajo la [Licencia MIT](./LICENSE).
