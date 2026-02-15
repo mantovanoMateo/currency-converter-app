@@ -1,0 +1,109 @@
+export type Locale = "es" | "en" | "pt";
+
+export const LOCALE_LABELS: Record<Locale, string> = {
+  es: "ES",
+  en: "EN",
+  pt: "PT",
+};
+
+export const LOCALE_NAMES: Record<Locale, string> = {
+  es: "Espanol",
+  en: "English",
+  pt: "Portugues",
+};
+
+const translations = {
+  es: {
+    title: "Cambio de Divisas",
+    subtitle: "Convierte al instante entre monedas",
+    amountLabel: "Monto a convertir",
+    placeholder: "0.00",
+    clear: "Borrar",
+    refresh: "Actualizar",
+    originalValue: "Valor original",
+    convertedValue: "Equivalente",
+    inDollars: "En dolares",
+    inCurrency: "En {currency}",
+    enterAmount: "Ingresa un monto para ver la conversion",
+    rateInfo: "1 {from} = {rate} {to}",
+    updatingRate: "Actualizando tasa...",
+    errorRate: "No se pudo obtener el tipo de cambio. Intenta de nuevo.",
+    footer: "Tasas de cambio aproximadas. No usar para transacciones financieras reales.",
+    swapDirection: "Invertir conversion",
+    currencyNames: {
+      ARS: "Peso Argentino",
+      MXN: "Peso Mexicano",
+      EUR: "Euro",
+      BRL: "Real Brasileno",
+      COP: "Peso Colombiano",
+      CLP: "Peso Chileno",
+      GBP: "Libra Esterlina",
+      PEN: "Sol Peruano",
+      UYU: "Peso Uruguayo",
+    },
+  },
+  en: {
+    title: "Currency Exchange",
+    subtitle: "Convert between currencies instantly",
+    amountLabel: "Amount to convert",
+    placeholder: "0.00",
+    clear: "Clear",
+    refresh: "Refresh",
+    originalValue: "Original value",
+    convertedValue: "Equivalent",
+    inDollars: "In dollars",
+    inCurrency: "In {currency}",
+    enterAmount: "Enter an amount to see the conversion",
+    rateInfo: "1 {from} = {rate} {to}",
+    updatingRate: "Updating rate...",
+    errorRate: "Could not fetch exchange rate. Try again.",
+    footer: "Approximate exchange rates. Not for real financial transactions.",
+    swapDirection: "Swap conversion",
+    currencyNames: {
+      ARS: "Argentine Peso",
+      MXN: "Mexican Peso",
+      EUR: "Euro",
+      BRL: "Brazilian Real",
+      COP: "Colombian Peso",
+      CLP: "Chilean Peso",
+      GBP: "British Pound",
+      PEN: "Peruvian Sol",
+      UYU: "Uruguayan Peso",
+    },
+  },
+  pt: {
+    title: "Cambio de Moedas",
+    subtitle: "Converta entre moedas instantaneamente",
+    amountLabel: "Valor a converter",
+    placeholder: "0.00",
+    clear: "Limpar",
+    refresh: "Atualizar",
+    originalValue: "Valor original",
+    convertedValue: "Equivalente",
+    inDollars: "Em dolares",
+    inCurrency: "Em {currency}",
+    enterAmount: "Insira um valor para ver a conversao",
+    rateInfo: "1 {from} = {rate} {to}",
+    updatingRate: "Atualizando taxa...",
+    errorRate: "Nao foi possivel obter a taxa de cambio. Tente novamente.",
+    footer: "Taxas de cambio aproximadas. Nao use para transacoes financeiras reais.",
+    swapDirection: "Inverter conversao",
+    currencyNames: {
+      ARS: "Peso Argentino",
+      MXN: "Peso Mexicano",
+      EUR: "Euro",
+      BRL: "Real Brasileiro",
+      COP: "Peso Colombiano",
+      CLP: "Peso Chileno",
+      GBP: "Libra Esterlina",
+      PEN: "Sol Peruano",
+      UYU: "Peso Uruguaio",
+    },
+  },
+} as const;
+
+export type Translations = (typeof translations)["es"];
+
+export function getTranslations(locale: Locale): Translations {
+  return translations[locale];
+}
